@@ -19,10 +19,12 @@
 		"@fontsource-variable/dm-sans": "^5.3.0",
 		"@fontsource-variable/fraunces": "^5.3.0",
 		"@fontsource/dm-mono": "^5.3.0",
+		"@kobalte/core": "^0.13.13",
 		"@tailwindcss/vite": "^4.1.18",
 		"@tanstack/solid-router": "latest",
 		"@tanstack/solid-router-devtools": "latest",
 		"@tanstack/solid-start": "latest",
+		"lucide-solid": "^1.38.0",
 		"solid-js": "^1.9.12",
 		"tailwindcss": "^4.1.18"
 	},
