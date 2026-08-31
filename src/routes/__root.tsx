@@ -13,8 +13,13 @@ import { Suspense, type JSXElement } from "solid-js";
 import favicon from "/icon.svg";
 import globalCss from "#/styles/global.css?url";
 
+import Header from "#/components/layout/Header";
+import DesktopSidebar from "#/components/layout/DesktopSidebar";
+import MobileNavigationBar from "#/components/layout/MobileNavigationBar";
+
 // FONT
 // fraunces weights 100-900
+import "@fontsource-variable/fraunces/wght.css";
 import "@fontsource-variable/fraunces/wght-italic.css";
 
 // dm sans weights 100-900
@@ -100,17 +105,18 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 	return (
-		<html lang="en">
+		<html lang="en" class="bg-bg-surface">
 			<head>
 				<HydrationScript />
 			</head>
-			<body>
+			<body class="text-text">
 				<HeadContent />
 				<Suspense>
-					<div class="min-block-svh grid grid-rows-[auto_1fr_auto]">
-						<header>qwer</header>
+					<div class="min-block-svh max-inline-[50rem] lg:max-inline-[90rem] grid lg:grid-cols-[16.25rem_1fr] grid-rows-[auto_1fr_auto] lg:grid-rows-1 bg-bg-page mx-auto">
+						<Header />
+						<DesktopSidebar />
 						{children}
-						<footer>asj</footer>
+						<MobileNavigationBar />
 					</div>
 				</Suspense>
 				<TanStackRouterDevtools />

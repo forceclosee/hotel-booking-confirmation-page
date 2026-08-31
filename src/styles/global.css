@@ -1,10 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-	/* font */
+	/* font family */
 	--font-serif: "Fraunces Variable", serif;
+	--font-dm-sans: "DM Sans Variable", sans-serif;
+	--font-dm-mono: "DM Mono", monospace;
+
+	/* font-size */
+	--text-2xs: 0.6875rem;
 
 	/* color */
+	--color-bg-page: hsl(35, 60%, 96%);
+	--color-bg-surface: hsl(35, 60%, 92%);
+
+	--color-text: hsl(33, 15%, 15%);
+	--color-text-muted: hsl(33, 17%, 41%);
+
+	--color-border: hsl(36, 22%, 86%);
+	--color-border-muted: hsl(30, 24%, 93%);
+
+	/* base color - will be deleted later */
 	--color-neutral-0: hsl(0, 0%, 100%);
 	--color-neutral-50: hsl(40, 60%, 98%);
 	--color-neutral-100: hsl(35, 60%, 96%);
@@ -28,6 +43,10 @@
 	--color-blue-500: hsl(230, 49%, 56%);
 
 	--color--rose-500: hsl(340, 48%, 52%);
+
+	/* spacing */
+	--spacing-fluid-200: clamp(1rem, 0.4221rem + 2.4653vw, 2rem);
+	--spacing-fluid-300: clamp(1rem, 0.1332rem + 3.6979vw, 2.5rem);
 }
 
 @layer base {
@@ -77,6 +96,11 @@
 		outline-style: dotted;
 		outline-width: 3px;
 		outline-color: var(--color-red-700);
+	}
+
+	/* TYPOGRAPHY */
+	h1 {
+		@apply text-[2.35rem];
 	}
 }
 
