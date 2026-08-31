@@ -1,15 +1,111 @@
 @import "tailwindcss";
 
-* {
-	box-sizing: border-box;
+@theme {
+	/* font */
+	--font-serif: "Fraunces Variable", serif;
+
+	/* color */
+	--color-neutral-0: hsl(0, 0%, 100%);
+	--color-neutral-50: hsl(40, 60%, 98%);
+	--color-neutral-100: hsl(35, 60%, 96%);
+	--color-neutral-200: hsl(30, 24%, 93%);
+	--color-neutral-400: hsl(36, 22%, 86%);
+	--color-neutral-600: hsl(33, 17%, 41%);
+	--color-neutral-700: hsl(32, 20%, 29%);
+	--color-neutral-800: hsl(33, 22%, 20%);
+	--color-neutral-900: hsl(33, 15%, 15%);
+
+	--color-sun-50: hsl(41, 100%, 93%);
+	--color-sun-200: hsl(45, 100%, 74%);
+	--color-sun-300: hsl(44, 84%, 75%);
+	--color-sun-500: hsl(42, 83%, 58%);
+
+	--color-terracotta-400: hsl(22, 72%, 56%);
+	--color-terracotta-500: hsl(18, 62%, 47%);
+	--color-terracotta-600: hsl(15, 74%, 41%);
+	--color-terracotta-700: hsl(15, 69%, 37%);
+
+	--color-blue-500: hsl(230, 49%, 56%);
+
+	--color--rose-500: hsl(340, 48%, 52%);
 }
 
-html,
-body,
-#app {
-	min-height: 100%;
+@layer base {
+	/* 	RESET */
+	html {
+		/* Reserve scrollbar area */
+		scrollbar-gutter: stable;
+		/* Enable smooth scrolling for anchor links */
+		@media (prefers-reduced-motion: no-preference) {
+			scroll-behavior: smooth;
+		}
+		/* Enable keywords animations */
+		interpolate-size: allow-keywords;
+	}
+
+	body {
+		/* Improve text rendering */
+		-webkit-font-smoothing: antialiased;
+		/* hide horizontal overflow */
+		overflow-x: hidden;
+		/* set default font */
+		font-family: var(--font-serif);
+		/* set-default line height */
+		line-height: 1.5;
+
+		@supports (overflow-x: clip) {
+			overflow-x: clip;
+		}
+	}
+
+	/* remove vertical white space for some element */
+	@supports (text-box: trim-both cap text) {
+		h1,
+		h2,
+		h3,
+		label,
+		li,
+		button,
+		a {
+			text-box: trim-both cap text;
+		}
+	}
+
+	/* improve focus styles */
+	:focus-visible {
+		outline-offset: 3px;
+		outline-style: dotted;
+		outline-width: 3px;
+		outline-color: var(--color-red-700);
+	}
 }
 
-body {
-	margin: 0;
+@utility hover-underline {
+	background:
+		linear-gradient(currentColor 0 0) bottom / var(--d, 0) 3px no-repeat;
+	transition: 0.5s;
+
+	&:hover {
+		@media (hover: hover) {
+			--d: 100%;
+		}
+	}
+}
+
+@utility hover-underline-2 {
+	background:
+		linear-gradient(currentColor 0 0) var(--p, 0) 100% / var(--d, 0) 3px
+		no-repeat;
+	transition:
+		0.3s,
+		background-position 0s 0.3s;
+
+	&:hover {
+		--d: 100%;
+		--p: 100%;
+	}
+}
+
+@utility squircle {
+	corner-shape: squircle;
 }

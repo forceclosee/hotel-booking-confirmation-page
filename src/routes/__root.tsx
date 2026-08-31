@@ -1,5 +1,4 @@
 import {
-	ErrorComponent,
 	HeadContent,
 	Outlet,
 	Scripts,
@@ -9,10 +8,20 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools";
 
 import { HydrationScript } from "solid-js/web";
-import { Suspense } from "solid-js";
+import { Suspense, type JSXElement } from "solid-js";
 
 import favicon from "/icon.svg";
 import globalCss from "#/styles/global.css?url";
+
+// FONT
+// fraunces weights 100-900
+import "@fontsource-variable/fraunces/wght-italic.css";
+
+// dm sans weights 100-900
+import "@fontsource-variable/dm-sans/wght.css";
+
+// dm mono static
+import "@fontsource/dm-mono";
 
 export const Route = createRootRouteWithContext()({
 	head: () => ({
@@ -83,16 +92,24 @@ export const Route = createRootRouteWithContext()({
 
 function RootComponent() {
 	return (
+		<RootDocument>
+			<Outlet />
+		</RootDocument>
+	);
+}
+
+function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
+	return (
 		<html lang="en">
 			<head>
 				<HydrationScript />
-				<HeadContent />
 			</head>
 			<body>
+				<HeadContent />
 				<Suspense>
 					<div class="min-block-svh grid grid-rows-[auto_1fr_auto]">
 						<header>qwer</header>
-						<Outlet />
+						{children}
 						<footer>asj</footer>
 					</div>
 				</Suspense>
