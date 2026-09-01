@@ -1,6 +1,7 @@
 import {
 	HeadContent,
 	Outlet,
+	ScriptOnce,
 	Scripts,
 	createRootRouteWithContext,
 } from "@tanstack/solid-router";
@@ -95,10 +96,30 @@ export const Route = createRootRouteWithContext()({
 	component: RootComponent,
 });
 
+const themeScript = `(function() {
+  try {
+    const savedTheme = localStorage.getItem("theme") || "system";
+		if (savedTheme) {
+			document.documentElement.setAttribute("data-theme", savedTheme);
+		}
+  } catch (e) {}
+})();`;
+
+function ThemeProvider({ children }: { children: JSXElement }) {
+	return (
+		<>
+			<ScriptOnce children={themeScript} />
+			{children}
+		</>
+	);
+}
+
 function RootComponent() {
 	return (
 		<RootDocument>
-			<Outlet />
+			<ThemeProvider>
+				<Outlet />
+			</ThemeProvider>
 		</RootDocument>
 	);
 }
@@ -108,9 +129,9 @@ function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 		<html lang="en" class="bg-bg-surface">
 			<head>
 				<HydrationScript />
+				<HeadContent />
 			</head>
 			<body class="text-text">
-				<HeadContent />
 				<Suspense>
 					<div class="min-block-svh max-inline-[50rem] lg:max-inline-[90rem] grid lg:grid-cols-[16.25rem_1fr] grid-rows-[auto_1fr_auto] lg:grid-rows-1 bg-bg-page mx-auto">
 						<Header />

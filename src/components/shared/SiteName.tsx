@@ -1,11 +1,22 @@
+import { cn } from "#/utils/class-helper";
+import { Link } from "@tanstack/solid-router";
 import { Sun } from "lucide-solid";
 
-export default function SiteName() {
+type Props = {
+	class?: string;
+};
+
+export default function SiteName(props: Props) {
 	return (
-		<div class="items-center gap-x-3 grid grid-cols-[auto_1fr] text-xl/5.5">
-			<Sun class="row-span-2 fill-sun-300 stroke-terracotta-600" />
-			<span class="text-terracotta-600 italic">Maison</span>
+		<Link
+			to="/"
+			class={cn(
+				"items-center gap-x-3 grid grid-cols-[auto_1fr] text-xl/5.5",
+				props.class,
+			)}>
+			<Sun class="row-span-2 fill-sun-300 stroke-text-terracotta" />
+			<span class="text-text-terracotta italic">Maison</span>
 			<span class="font-semibold">Soleil</span>
-		</div>
+		</Link>
 	);
 }

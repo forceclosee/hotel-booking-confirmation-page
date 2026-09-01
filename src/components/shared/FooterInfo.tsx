@@ -1,18 +1,19 @@
 export default function FooterInfo() {
 	return (
 		<footer>
-			<p class="text-2xs text-center">
+			<p class="text-2xs text-text-muted text-center">
 				Challenge by{" "}
 				<a
-					class="text-terracotta-600 hover-underline-2 pbe-1"
+					class="text-text-terracotta hover-underline-2 pbe-1"
 					href="https://www.frontendmentor.io?ref=challenge"
 					target="_blank"
 					rel="noopener noreferrer">
 					Frontend Mentor
 				</a>
-				. Coded by{" "}
+				.<br />
+				Coded by{" "}
 				<a
-					class="text-terracotta-600 hover-underline-2 pbe-1"
+					class="text-text-terracotta hover-underline-2 pbe-1"
 					href="https://github.com/forceclosee"
 					target="_blank"
 					rel="noopener noreferrer">

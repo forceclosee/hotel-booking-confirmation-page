@@ -4,6 +4,7 @@ import { Button as Btn } from "@kobalte/core/button";
 import { classList } from "#/utils/class-helper";
 
 type Props = ComponentProps<"button"> & {
+	class?: string;
 	variant?: "primary" | "secondary";
 };
 
@@ -14,10 +15,11 @@ export default function Button(props: Props) {
 		<Btn
 			type="button"
 			class={classList(
-				"px-4 py-2.5 rounded-full font-dm-sans font-medium text-[0.9375rem]",
+				"min-block-9.5 px-4 rounded-full font-dm-sans font-medium text-[0.9375rem] transition-colors duration-200 cursor-pointer",
 				merged.variant === "primary"
-					? "bg-neutral-900 text-neutral-0"
-					: "border border-border",
+					? "bg-text text-bg-surface hover:bg-bg-button-primary-hover focus-visible:bg-bg-button-primary-hover"
+					: "border focus-visible:bg-bg-button-secondary-hover border-border hover:bg-bg-button-secondary-hover",
+				props.class,
 			)}>
 			{props.children}
 		</Btn>
