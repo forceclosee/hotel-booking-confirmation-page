@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 type ClassValue =
 	| string
 	| number
@@ -28,4 +30,8 @@ export function classList(...args: ClassValue[]): string {
 	}
 
 	return classes.join(" ");
+}
+
+export function cn(...inputs: ClassValue[]): string {
+	return twMerge(classList(inputs));
 }
