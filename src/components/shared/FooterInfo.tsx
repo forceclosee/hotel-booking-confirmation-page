@@ -1,7 +1,13 @@
 export default function FooterInfo() {
 	return (
-		<footer>
-			<p class="text-2xs text-text-muted text-center">
+		<footer class="text-text-muted">
+			<div class="gap-2.5 grid py-4 border-border-muted border-y border-dashed font-dm-mono text-2xs/3.5 uppercase">
+				<p>Est. 1987</p>
+				<p>Maison Soleil · 12 Rue des Oliviers · Cassis</p>
+				<p>© 2026 Maison Soleil</p>
+			</div>
+
+			<p class="font-dm-sans text-3xs text-center mbs-4">
 				Challenge by{" "}
 				<a
 					class="text-text-terracotta hover-underline-2 pbe-1"
@@ -10,7 +16,8 @@ export default function FooterInfo() {
 					rel="noopener noreferrer">
 					Frontend Mentor
 				</a>
-				.<br />
+				.
+				<br />
 				Coded by{" "}
 				<a
 					class="text-text-terracotta hover-underline-2 pbe-1"

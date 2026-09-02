@@ -14,7 +14,7 @@ export default function SiteName(props: Props) {
 				"items-center gap-x-3 grid grid-cols-[auto_1fr] text-xl/5.5",
 				props.class,
 			)}>
-			<Sun class="row-span-2 fill-sun-300 stroke-text-terracotta" />
+			<Sun class="block-auto inline-8 row-span-2 fill-sun-300 stroke-text-terracotta" />
 			<span class="text-text-terracotta italic">Maison</span>
 			<span class="font-semibold">Soleil</span>
 		</Link>
