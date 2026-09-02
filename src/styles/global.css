@@ -19,12 +19,13 @@
 	--font-dm-mono: "DM Mono", monospace;
 
 	/* font-size */
-	--text-2xs: 0.6875rem;
+	--text-2xs: 0.728125rem;
+	--text-3xs: 0.6875rem;
 
 	/* color */
 	--color-bg-surface: light-dark(hsl(35, 60%, 92%), hsl(35, 60%, 2%));
 	--color-bg-page: light-dark(hsl(35, 60%, 96%), hsl(35, 60%, 4%));
-	--color-bg-card: light-dark(hsl(40, 60%, 98%), hsl(40, 60%, 8%));
+	--color-bg-card: light-dark(hsl(0, 0%, 99%), hsl(40, 60%, 8%));
 	--color-bg-sun: light-dark(hsl(44, 84%, 90%), hsl(44, 84%, 10%));
 	--color-bg-button-primary-hover: light-dark(
 		hsl(33, 22%, 20%),
@@ -34,13 +35,17 @@
 		hsl(30, 24%, 93%),
 		hsl(30, 24%, 8%)
 	);
+	--color-bg-weather: hsl(44, 84%, 75%);
+	--color-bg-terracotta: light-dark(hsl(15, 69%, 37%), hsl(15, 69%, 63%));
 
 	--color-text: light-dark(hsl(33, 15%, 15%), hsl(33, 15%, 84%));
+	--color-text-inverse: light-dark(hsl(33, 15%, 84%), hsl(33, 15%, 15%));
 	--color-text-muted: light-dark(hsl(33, 17%, 41%), hsl(33, 17%, 62%));
 	--color-text-terracotta: light-dark(hsl(15, 74%, 41%), hsl(15, 67%, 65%));
+	--color-text-error: light-dark(var(--color-red-700), var(--color-red-400));
 
 	--color-border: light-dark(hsl(36, 22%, 86%), hsl(36, 22%, 14%));
-	--color-border-muted: light-dark(hsl(30, 24%, 93%), hsl(30, 24%, 7%));
+	--color-border-muted: light-dark(hsl(30, 24%, 89%), hsl(30, 24%, 11%));
 
 	/* base color - will be deleted later */
 	--color-neutral-0: hsl(0, 0%, 100%);
@@ -159,4 +164,7 @@
 
 @utility trim-capital {
 	text-box: trim-both cap alphabetic;
+}
+@utility trim-text {
+	text-box: trim-both cap text;
 }

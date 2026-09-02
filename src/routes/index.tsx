@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
 	return (
-		<main class="@container/main px-fluid-300 py-fluid-200">
+		<main class="@container/main inline-full max-inline-[50rem] lg:max-inline-full justify-self-center px-fluid-300 py-fluid-200">
 			<WelcomeBanner />
 		</main>
 	);

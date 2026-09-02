@@ -133,7 +133,7 @@ function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 			</head>
 			<body class="text-text">
 				<Suspense>
-					<div class="min-block-svh max-inline-[50rem] lg:max-inline-[90rem] grid lg:grid-cols-[16.25rem_1fr] grid-rows-[auto_1fr_auto] lg:grid-rows-1 bg-bg-page mx-auto">
+					<div class="min-block-svh lg:max-inline-[90rem] grid lg:grid-cols-[16.25rem_1fr] grid-rows-[auto_1fr_auto] lg:grid-rows-1 bg-bg-page mx-auto">
 						<Header />
 						<DesktopSidebar />
 						{children}
