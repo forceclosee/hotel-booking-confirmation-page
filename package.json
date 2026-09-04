@@ -25,6 +25,7 @@
 		"@tanstack/solid-router-devtools": "latest",
 		"@tanstack/solid-start": "latest",
 		"lucide-solid": "^1.38.0",
+		"solid-focus-trap": "^0.1.9",
 		"solid-js": "^1.9.12",
 		"tailwind-merge": "^3.6.0",
 		"tailwindcss": "^4.1.18"
