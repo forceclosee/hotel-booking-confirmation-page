@@ -8,7 +8,7 @@ export default function DesktopSidebar() {
 	return (
 		<aside class="hidden block-svh lg:flex flex-col gap-4 px-4 py-5 border-border border-e overflow-auto">
 			<SiteName class="ps-1.5 border-be border-border pbe-4" />
-			<ThemeToggle />
+			<ThemeToggle isSidebar class="border-be border-border-muted pbe-4" />
 			<NavLink isDesktop />
 			<WeatherWidget class="mbs-auto" />
 			<FooterInfo />

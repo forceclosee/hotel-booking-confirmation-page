@@ -75,6 +75,8 @@
 	/* spacing */
 	--spacing-fluid-200: clamp(1rem, 0.4221rem + 2.4653vw, 2rem);
 	--spacing-fluid-300: clamp(1rem, 0.1332rem + 3.6979vw, 2.5rem);
+
+	--spacing-header-height: 4.5625rem;
 }
 
 @layer base {
@@ -121,9 +123,9 @@
 	/* improve focus styles */
 	:focus-visible {
 		outline-offset: 3px;
-		outline-style: dotted;
+		outline-style: solid;
 		outline-width: 3px;
-		outline-color: var(--color-red-700);
+		outline-color: var(--color-text-terracotta);
 	}
 
 	/* TYPOGRAPHY */
@@ -167,4 +169,48 @@
 }
 @utility trim-text {
 	text-box: trim-both cap text;
+}
+
+@utility hamburger-transition-timing {
+	@media (prefers-reduced-motion: no-preference) {
+		transition:
+			translate 0.3s 0.3s,
+			opacity 0s 0.3s,
+			rotate 0.3s;
+
+		.group[aria-expanded="true"] & {
+			transition:
+				rotate 0.3s 0.3s,
+				opacity 0s 0.3s,
+				translate 0.3s;
+		}
+	}
+}
+
+@utility menu-transition {
+	transition: all 0.5s allow-discrete;
+
+	@media (prefers-reduced-motion: no-preference) {
+		translate: 100% 0;
+
+		&:popover-open {
+			translate: 0 0;
+
+			@starting-style {
+				translate: 100% 0;
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		opacity: 0;
+
+		&:popover-open {
+			opacity: 1;
+
+			@starting-style {
+				opacity: 0;
+			}
+		}
+	}
 }

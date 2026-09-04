@@ -1,4 +1,4 @@
-import { mergeProps, type ComponentProps } from "solid-js";
+import { mergeProps, splitProps, type ComponentProps } from "solid-js";
 
 import { Button as Btn } from "@kobalte/core/button";
 import { cn } from "#/utils/class-helper";
@@ -11,6 +11,8 @@ type Props = ComponentProps<"button"> & {
 export default function Button(props: Props) {
 	const merged = mergeProps({ variant: "primary" }, props);
 
+	const [core, rest] = splitProps(merged, ["class", "variant", "children"]);
+
 	return (
 		<Btn
 			type="button"
@@ -19,9 +21,10 @@ export default function Button(props: Props) {
 				merged.variant === "primary"
 					? "bg-text text-bg-surface hover:bg-bg-button-primary-hover focus-visible:bg-bg-button-primary-hover"
 					: "border focus-visible:bg-bg-button-secondary-hover border-border hover:bg-bg-button-secondary-hover",
-				props.class,
-			)}>
-			{props.children}
+				core.class,
+			)}
+			{...rest}>
+			{core.children}
 		</Btn>
 	);
 }

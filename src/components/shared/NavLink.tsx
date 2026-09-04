@@ -9,6 +9,7 @@ const links = [
 		label: "Your stay",
 		href: "/",
 		haveBadge: true,
+		badge: 1,
 	},
 	{
 		icon: House,
@@ -41,7 +42,7 @@ export default function NavLink(props: Props) {
 		<nav>
 			<ul
 				class={classList(
-					"flex gap-x-2 gap-y-0.5 font-dm-sans text-text-muted text-sm",
+					"flex gap-x-1 gap-y-0.5 font-dm-sans text-text-muted text-sm",
 					props.isDesktop ? "flex-col" : "flex-row",
 				)}>
 				<For each={links}>
@@ -51,10 +52,10 @@ export default function NavLink(props: Props) {
 							<Link
 								to={item.href}
 								class={classList(
-									"flex items-center gap-2 data-[status=active]:text-text transition-colors duration-200",
+									"flex items-center gap-2 rounded-xl data-[status=active]:text-text transition-colors duration-200 squircle",
 									props.isDesktop
 										? "hover:bg-bg-card data-[status=active]:bg-bg-card focus-visible:bg-bg-card px-3.5 py-2.5 hover:ring-border-muted rounded-xl hover:ring-1 hover:ring-inset hover:text-text focus-visible:text-text items-center squircle"
-										: "p-4 flex-col relative",
+										: "px-4 py-3 flex-col relative data-[status=active]:bg-bg-sun",
 								)}>
 								<item.icon
 									class={classList(
@@ -75,11 +76,11 @@ export default function NavLink(props: Props) {
 										class={classList(
 											"block-4 inline-4 flex justify-center items-center bg-bg-terracotta ms-auto rounded-full font-serif text-2xs text-text-inverse",
 											{
-												"absolute inset-bs-1.5 inset-e-1 sm:inset-e-3":
+												"absolute inset-bs-1 inset-e-1.5 sm:inset-e-3":
 													!props.isDesktop,
 											},
 										)}>
-										1
+										{item.badge}
 									</span>
 								</Show>
 							</Link>

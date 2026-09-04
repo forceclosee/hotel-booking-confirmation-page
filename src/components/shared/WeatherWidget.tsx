@@ -1,10 +1,15 @@
 import { classList } from "#/utils/class-helper";
+import { createUniqueId } from "solid-js";
 
 type Props = {
 	class?: string;
 };
 
 export default function WeatherWidget(props: Props) {
+	const uniqueId = createUniqueId();
+	const filterId = `weather-filter-${uniqueId}`;
+	const gradientId = `weather-gradient-${uniqueId}`;
+
 	return (
 		<div
 			class={classList(
@@ -26,12 +31,12 @@ export default function WeatherWidget(props: Props) {
 				fill="none"
 				viewBox="0 0 80 80"
 				aria-hidden="true">
-				<g filter="url(#a)">
-					<rect width="80" height="80" fill="url(#b)" rx="40" />
+				<g filter={`url(#${filterId})`}>
+					<rect width="80" height="80" fill={`url(#${gradientId})`} rx="40" />
 				</g>
 				<defs>
 					<radialGradient
-						id="b"
+						id={gradientId}
 						cx="0"
 						cy="0"
 						r="1"
@@ -41,7 +46,7 @@ export default function WeatherWidget(props: Props) {
 						<stop offset=".7" stop-color="#edb63a" />
 					</radialGradient>
 					<filter
-						id="a"
+						id={filterId}
 						width="80"
 						height="80"
 						x="0"
