@@ -1,8 +1,13 @@
 import Button from "#/components/ui/Button";
+import { classList } from "#/utils/class-helper";
 
-export default function WelcomeBanner() {
+type Props = {
+	class?: string;
+};
+
+export default function WelcomeBanner(props: Props) {
 	return (
-		<section class="flex @min-3xl/main:flex-row flex-col gap-4.5">
+		<section class={classList("flex gap-4.5", props.class)}>
 			<div class="me-auto">
 				<span class="font-dm-mono text-text-muted text-sm uppercase tracking-wider">
 					Booking · Confirmed

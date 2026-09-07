@@ -1,7 +1,9 @@
-import { classList } from "#/utils/class-helper";
-import { Link } from "@tanstack/solid-router";
-import { BedDouble, HandPlatter, House, Mail, MapPin } from "lucide-solid";
 import { For, Show } from "solid-js";
+import { Link } from "@tanstack/solid-router";
+import { BedDouble, House, Mail, MapPin } from "lucide-solid";
+import BreakfastOutlineIcon from "#/icon/icon-breakfast-outline.svg?solid";
+
+import { classList } from "#/utils/class-helper";
 
 const links = [
 	{
@@ -22,7 +24,7 @@ const links = [
 		href: "/around-town",
 	},
 	{
-		icon: HandPlatter,
+		icon: BreakfastOutlineIcon,
 		label: "Breakfast",
 		href: "/breakfast",
 	},
