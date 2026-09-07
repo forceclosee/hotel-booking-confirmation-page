@@ -1,11 +1,10 @@
 import { defineConfig } from "vite";
 import { devtools } from "@tanstack/devtools-vite";
 import tailwindcss from "@tailwindcss/vite";
-
 import { tanstackStart } from "@tanstack/solid-start/plugin/vite";
-
 import solidPlugin from "vite-plugin-solid";
 import { cloudflare } from "@cloudflare/vite-plugin";
+import solidSVG from "vite-solid-svg";
 
 export default defineConfig({
 	resolve: { tsconfigPaths: true },
@@ -15,5 +14,6 @@ export default defineConfig({
 		tailwindcss(),
 		tanstackStart(),
 		solidPlugin({ ssr: true }),
+		solidSVG(),
 	],
 });
