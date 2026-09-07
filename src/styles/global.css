@@ -23,10 +23,11 @@
 	--text-3xs: 0.6875rem;
 
 	/* color */
-	--color-bg-surface: light-dark(hsl(35, 60%, 92%), hsl(35, 60%, 2%));
-	--color-bg-page: light-dark(hsl(35, 60%, 96%), hsl(35, 60%, 4%));
-	--color-bg-card: light-dark(hsl(0, 0%, 99%), hsl(40, 60%, 8%));
+	--color-bg-surface: light-dark(hsl(35, 60%, 91%), hsl(35, 60%, 2%));
+	--color-bg-page: light-dark(hsl(35, 60%, 95%), hsl(35, 40%, 4%));
+	--color-bg-card: light-dark(hsl(35, 40%, 99%), hsl(35, 20%, 7%));
 	--color-bg-sun: light-dark(hsl(44, 84%, 90%), hsl(44, 84%, 10%));
+	--color-bg-sun-dark: hsl(42, 83%, 58%);
 	--color-bg-button-primary-hover: light-dark(
 		hsl(33, 22%, 20%),
 		hsl(33, 22%, 77%)
@@ -37,11 +38,14 @@
 	);
 	--color-bg-weather: hsl(44, 84%, 75%);
 	--color-bg-terracotta: light-dark(hsl(15, 69%, 37%), hsl(15, 69%, 63%));
+	--color-bg-welcome-card-dark: hsl(15, 69%, 28%);
+	--color-bg-welcome-card-light: hsl(18, 62%, 49%);
 
 	--color-text: light-dark(hsl(33, 15%, 15%), hsl(33, 15%, 84%));
 	--color-text-inverse: light-dark(hsl(33, 15%, 84%), hsl(33, 15%, 15%));
-	--color-text-muted: light-dark(hsl(33, 17%, 41%), hsl(33, 17%, 62%));
+	--color-text-muted: light-dark(hsl(33, 5%, 41%), hsl(33, 5%, 59%));
 	--color-text-terracotta: light-dark(hsl(15, 74%, 41%), hsl(15, 67%, 65%));
+	--color-text-sun: hsl(44, 84%, 75%);
 	--color-text-error: light-dark(var(--color-red-700), var(--color-red-400));
 
 	--color-border: light-dark(hsl(36, 22%, 86%), hsl(36, 22%, 14%));
@@ -77,6 +81,10 @@
 	--spacing-fluid-300: clamp(1rem, 0.1332rem + 3.6979vw, 2.5rem);
 
 	--spacing-header-height: 4.5625rem;
+
+	/* z-index */
+	--z-card: 10;
+	--z-mobile-nav: 500;
 }
 
 @layer base {
@@ -131,6 +139,10 @@
 	/* TYPOGRAPHY */
 	h1 {
 		@apply text-[2.35rem];
+	}
+
+	p {
+		@apply text-sm;
 	}
 }
 
@@ -213,4 +225,22 @@
 			}
 		}
 	}
+}
+
+@utility border-gradient {
+	@apply bg-linear-to-r from-border-muted/20 to-border-muted/5;
+	mask-image: linear-gradient(
+		to right,
+		var(--color-border-muted) 60%,
+		transparent 0%
+	);
+	mask-size: 12px 100%;
+}
+
+@utility z-card {
+	z-index: var(--z-card);
+}
+
+@utility z-mobile-nav {
+	z-index: var(--z-mobile-nav);
 }
