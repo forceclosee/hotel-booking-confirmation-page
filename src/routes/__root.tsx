@@ -27,7 +27,8 @@ import "@fontsource-variable/fraunces/wght-italic.css";
 import "@fontsource-variable/dm-sans/wght.css";
 
 // dm mono static
-import "@fontsource/dm-mono";
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
 
 export const Route = createRootRouteWithContext()({
 	head: () => ({
@@ -99,9 +100,7 @@ export const Route = createRootRouteWithContext()({
 const themeScript = `(function() {
   try {
     const savedTheme = localStorage.getItem("theme") || "system";
-		if (savedTheme) {
-			document.documentElement.setAttribute("data-theme", savedTheme);
-		}
+		document.documentElement.setAttribute("data-theme", savedTheme);
   } catch (e) {}
 })();`;
 

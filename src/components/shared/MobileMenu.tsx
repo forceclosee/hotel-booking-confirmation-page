@@ -2,6 +2,7 @@ import { createSignal, onCleanup, onMount } from "solid-js";
 import { Portal } from "solid-js/web";
 
 import createFocusTrap from "solid-focus-trap";
+import createPreventScroll from "solid-prevent-scroll";
 
 import WeatherWidget from "#/components/shared/WeatherWidget";
 import FooterInfo from "#/components/shared/FooterInfo";
@@ -16,9 +17,17 @@ export default function MobileMenu(props: Props) {
 		null,
 	);
 
+	// trap focus inside mobile menu
 	createFocusTrap({
 		element: mobileMenuRef,
 		enabled: () => props.open,
+	});
+
+	// disable page scroll when mobile menu is open
+	createPreventScroll({
+		element: mobileMenuRef,
+		enabled: () => props.open,
+		preventScrollbarShift: false,
 	});
 
 	// synchronize popover state with signal

@@ -54,10 +54,10 @@ export default function NavLink(props: Props) {
 							<Link
 								to={item.href}
 								class={classList(
-									"flex items-center gap-2 rounded-xl data-[status=active]:text-text transition-colors duration-200 squircle",
+									"flex items-center gap-2 data-[status=active]:ring-border-muted rounded-xl data-[status=active]:ring-1 data-[status=active]:ring-inset data-[status=active]:text-text transition-colors duration-200 squircle",
 									props.isDesktop
 										? "hover:bg-bg-card data-[status=active]:bg-bg-card focus-visible:bg-bg-card px-3.5 py-2.5 hover:ring-border-muted rounded-xl hover:ring-1 hover:ring-inset hover:text-text focus-visible:text-text items-center squircle"
-										: "px-4 py-3 flex-col relative data-[status=active]:bg-bg-sun",
+										: "px-4 py-3 flex-col relative data-[status=active]:bg-bg-gray",
 								)}>
 								<item.icon
 									class={classList(
