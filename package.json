@@ -27,6 +27,7 @@
 		"lucide-solid": "^1.38.0",
 		"solid-focus-trap": "^0.1.9",
 		"solid-js": "^1.9.12",
+		"solid-prevent-scroll": "^0.1.11",
 		"tailwind-merge": "^3.6.0",
 		"tailwindcss": "^4.1.18"
 	},
