@@ -6,6 +6,9 @@ import SparkleIcon from "#/icon/icon-sparkle.svg?solid";
 import WelcomeBanner from "#/components/main/WelcomeBanner";
 import WelcomeCard from "#/components/main/WelcomeCard";
 import Receipt from "#/components/main/Receipt";
+import ArrivalCard from "#/components/main/ArrivalCard";
+import BreakfastCard from "#/components/main/BreakfastCard";
+import WifiCard from "#/components/main/WifiCard";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -32,6 +35,12 @@ function Home() {
 					</span>
 					<SparkleIcon class="text-text-terracotta" />
 				</div>
+			</div>
+
+			<div class="justify-self-center gap-6 grid @min-[45rem]/main:grid-cols-2 @min-[66rem]/main:grid-cols-3">
+				<ArrivalCard />
+				<WifiCard />
+				<BreakfastCard />
 			</div>
 		</main>
 	);

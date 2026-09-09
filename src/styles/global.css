@@ -37,9 +37,11 @@
 		hsl(30, 24%, 8%)
 	);
 	--color-bg-weather: hsl(44, 84%, 75%);
-	--color-bg-terracotta: light-dark(hsl(15, 69%, 37%), hsl(15, 69%, 63%));
+	--color-bg-terracotta: light-dark(hsl(15, 69%, 37%), hsl(15, 55%, 65%));
 	--color-bg-welcome-card-dark: hsl(15, 69%, 28%);
 	--color-bg-welcome-card-light: hsl(18, 62%, 49%);
+	--color-bg-tooltip: light-dark(var(--color-blue-900), var(--color-blue-100));
+	--color-bg-gray: light-dark(hsl(30, 24%, 93%), hsl(30, 20%, 11%));
 
 	--color-text: light-dark(hsl(33, 15%, 15%), hsl(33, 15%, 84%));
 	--color-text-inverse: light-dark(hsl(33, 15%, 84%), hsl(33, 15%, 15%));
@@ -50,6 +52,9 @@
 
 	--color-border: light-dark(hsl(36, 22%, 86%), hsl(36, 22%, 14%));
 	--color-border-muted: light-dark(hsl(30, 24%, 89%), hsl(30, 24%, 11%));
+
+	--color-wifi: light-dark(hsl(230, 49%, 47%), hsl(230, 43%, 68%));
+	--color-breakfast: light-dark(hsl(340, 48%, 47%), hsl(340, 41%, 69%));
 
 	/* base color - will be deleted later */
 	--color-neutral-0: hsl(0, 0%, 100%);
@@ -243,4 +248,68 @@
 
 @utility z-mobile-nav {
 	z-index: var(--z-mobile-nav);
+}
+
+@utility show-tooltip {
+	@media (prefers-reduced-motion: no-preference) {
+		animation: tooltip-show-no-preference 0.2s ease-out;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		animation: tooltip-show-reduce 0.2s ease-out;
+	}
+}
+
+@keyframes tooltip-show-no-preference {
+	from {
+		opacity: 0;
+		translate: 0 1rem;
+		scale: 0.5;
+	}
+	to {
+		opacity: 1;
+		translate: 0 0;
+		scale: 1;
+	}
+}
+
+@keyframes tooltip-show-reduce {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@utility hide-tooltip {
+	@media (prefers-reduced-motion: no-preference) {
+		animation: tooltip-hide-no-preference 0.2s ease-in forwards;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		animation: tooltip-hide-reduce 0.2s ease-in forwards;
+	}
+}
+
+@keyframes tooltip-hide-no-preference {
+	from {
+		opacity: 1;
+		translate: 0 0;
+		scale: 1;
+	}
+	to {
+		opacity: 0;
+		translate: 0 1rem;
+		scale: 0.5;
+	}
+}
+
+@keyframes tooltip-hide-reduce {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
