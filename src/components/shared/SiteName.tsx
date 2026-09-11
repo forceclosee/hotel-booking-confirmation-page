@@ -11,7 +11,7 @@ export default function SiteName(props: Props) {
 		<Link
 			to="/"
 			class={cn(
-				"items-center gap-x-3 grid grid-cols-[auto_1fr] text-xl/5.5",
+				"grid grid-cols-[auto_1fr] items-center gap-x-3 text-xl/5.5",
 				props.class,
 			)}>
 			<Sun class="block-auto inline-8 row-span-2 fill-bg-weather stroke-text-terracotta" />

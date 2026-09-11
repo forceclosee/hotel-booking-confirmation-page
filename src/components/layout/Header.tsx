@@ -19,25 +19,25 @@ export default function Header() {
 
 	return (
 		<>
-			<header class="lg:hidden min-block-header-height flex items-center gap-4 px-fluid-300 border-be border-border">
+			<header class="min-block-header-height flex items-center gap-4 border-be border-border px-fluid-300 lg:hidden">
 				<SiteName />
 				<ThemeToggle class="ms-auto" />
 				<Button
 					variant="secondary"
 					popoverTarget="mobile-menu-panel"
-					class="group block-11.5 inline-11.5 flex flex-col justify-center items-center gap-1 rounded-lg cursor-pointer shrink-0 squircle"
+					class="group block-11.5 inline-11.5 squircle flex shrink-0 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg"
 					aria-expanded={isMenuOpen()}
 					aria-controls="mobile-menu-panel"
 					aria-label={isMenuOpen() ? "Close menu" : "Open menu"}
 					onclick={handleMenuButtonClick}>
 					<span
-						class="block-0.5 inline-3.5 bg-text group-[[aria-expanded='true']]:rotate-45 hamburger-transition-timing translate-y-0 group-[[aria-expanded='true']]:translate-y-1.5 pointer-events-none"
+						class="block-0.5 inline-3.5 hamburger-transition-timing pointer-events-none translate-y-0 bg-text group-[[aria-expanded='true']]:translate-y-1.5 group-[[aria-expanded='true']]:rotate-45"
 						aria-hidden="true"></span>
 					<span
-						class="block-0.5 inline-3.5 bg-text group-[[aria-expanded='true']]:opacity-0 hamburger-transition-timing translate-y-0 pointer-events-none"
+						class="block-0.5 inline-3.5 hamburger-transition-timing pointer-events-none translate-y-0 bg-text group-[[aria-expanded='true']]:opacity-0"
 						aria-hidden="true"></span>
 					<span
-						class="block-0.5 inline-3.5 bg-text group-[[aria-expanded='true']]:-rotate-45 hamburger-transition-timing translate-y-0 group-[[aria-expanded='true']]:-translate-y-1.5 pointer-events-none"
+						class="block-0.5 inline-3.5 hamburger-transition-timing pointer-events-none translate-y-0 bg-text group-[[aria-expanded='true']]:-translate-y-1.5 group-[[aria-expanded='true']]:-rotate-45"
 						aria-hidden="true"></span>
 				</Button>
 			</header>

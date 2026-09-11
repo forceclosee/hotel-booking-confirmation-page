@@ -12,11 +12,11 @@ type Props = {
 
 export default function Card(props: Props) {
 	return (
-		<section class="inline-full max-inline-[22rem] bg-bg-card px-5 border border-border-muted rounded-3xl font-dm-sans pbs-6 pbe-8 squircle">
+		<section class="inline-full max-inline-[22rem] pbs-6 pbe-8 squircle rounded-3xl border border-border-muted bg-bg-card px-5 font-dm-sans">
 			<div class="flex items-center gap-2.5">
 				<span
 					class={classList(
-						"inline-block p-2 rounded-2xl squircle",
+						"squircle inline-block rounded-2xl p-2",
 						{ "bg-bg-terracotta": props.label === "Arrival" },
 						{ "bg-wifi": props.label === "Wifi" },
 						{ "bg-breakfast": props.label === "Breakfast" },
@@ -43,8 +43,8 @@ export default function Card(props: Props) {
 				</span>
 			</div>
 
-			<h2 class="font-serif text-2xl mbs-8">{props.title}</h2>
-			<p class="text-text-muted text-xs mbe-4 mbs-2">{props.subtitle}</p>
+			<h2 class="mbs-8 font-serif text-2xl">{props.title}</h2>
+			<p class="mbe-4 mbs-2 text-text-muted text-xs">{props.subtitle}</p>
 			{props.children}
 		</section>
 	);

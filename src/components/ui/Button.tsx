@@ -17,10 +17,10 @@ export default function Button(props: Props) {
 		<Btn
 			type="button"
 			class={cn(
-				"min-block-9.5 px-4 rounded-full font-dm-sans font-medium text-[0.9375rem] active:scale-95 transition-all duration-200 cursor-pointer",
+				"min-block-9.5 cursor-pointer rounded-full px-4 font-dm-sans font-medium text-[0.9375rem] transition-all duration-200 active:scale-95",
 				merged.variant === "primary"
 					? "bg-text text-bg-surface hover:bg-bg-button-primary-hover focus-visible:bg-bg-button-primary-hover"
-					: "border focus-visible:bg-bg-button-secondary-hover border-border hover:bg-bg-button-secondary-hover",
+					: "border border-border hover:bg-bg-button-secondary-hover focus-visible:bg-bg-button-secondary-hover",
 				core.class,
 			)}
 			{...rest}>

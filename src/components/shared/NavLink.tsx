@@ -44,7 +44,7 @@ export default function NavLink(props: Props) {
 		<nav>
 			<ul
 				class={classList(
-					"flex gap-x-1 gap-y-0.5 font-dm-sans text-text-muted text-sm",
+					"flex gap-x-1 gap-y-0.5 font-dm-sans text-sm text-text-muted",
 					props.isDesktop ? "flex-col" : "flex-row",
 				)}>
 				<For each={links}>
@@ -54,29 +54,29 @@ export default function NavLink(props: Props) {
 							<Link
 								to={item.href}
 								class={classList(
-									"flex items-center gap-2 data-[status=active]:ring-border-muted rounded-xl data-[status=active]:ring-1 data-[status=active]:ring-inset data-[status=active]:text-text transition-colors duration-200 squircle",
+									"squircle flex items-center gap-2 rounded-xl transition-colors duration-200 data-[status=active]:text-text data-[status=active]:ring-1 data-[status=active]:ring-border-muted data-[status=active]:ring-inset",
 									props.isDesktop
-										? "hover:bg-bg-card data-[status=active]:bg-bg-card focus-visible:bg-bg-card px-3.5 py-2.5 hover:ring-border-muted rounded-xl hover:ring-1 hover:ring-inset hover:text-text focus-visible:text-text items-center squircle"
-										: "px-4 py-3 flex-col relative data-[status=active]:bg-bg-gray",
+										? "squircle items-center rounded-xl px-3.5 py-2.5 hover:bg-bg-card hover:text-text hover:ring-1 hover:ring-border-muted hover:ring-inset focus-visible:bg-bg-card focus-visible:text-text data-[status=active]:bg-bg-card"
+										: "relative flex-col px-4 py-3 data-[status=active]:bg-bg-gray",
 								)}>
 								<item.icon
 									class={classList(
 										"group-has-data-[status=active]:text-text",
 										props.isDesktop
-											? "block-4.5 inline-4.5 "
+											? "block-4.5 inline-4.5"
 											: "block-6 inline-6 sm:inline-5 sm:block-5",
 									)}
 								/>
 								<span
 									class={classList({
-										"hidden sm:block text-xs": !props.isDesktop,
+										"hidden text-xs sm:block": !props.isDesktop,
 									})}>
 									{item.label}
 								</span>
 								<Show when={item.haveBadge}>
 									<span
 										class={classList(
-											"block-4 inline-4 flex justify-center items-center bg-bg-terracotta ms-auto rounded-full font-serif text-2xs text-text-inverse",
+											"block-4 inline-4 ms-auto flex items-center justify-center rounded-full bg-bg-terracotta font-serif text-2xs text-text-inverse",
 											{
 												"absolute inset-bs-1 inset-e-1.5 sm:inset-e-3":
 													!props.isDesktop,

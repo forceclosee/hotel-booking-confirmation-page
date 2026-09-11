@@ -60,7 +60,7 @@ export default function MobileMenu(props: Props) {
 				ref={setMobileMenuRef}
 				id="mobile-menu-panel"
 				popover
-				class="block-[calc(100%_-_var(--spacing-header-height))] inline-full inset-bs-header-height [:popover-open]:flex justify-center bg-bg-page menu-transition"
+				class="block-[calc(100%_-_var(--spacing-header-height))] inline-full menu-transition inset-bs-header-height justify-center bg-bg-page [:popover-open]:flex"
 				onToggle={handleToggle}>
 				<div class="max-inline-[50rem] flex flex-col justify-end gap-4 px-fluid-300 py-4">
 					<WeatherWidget />

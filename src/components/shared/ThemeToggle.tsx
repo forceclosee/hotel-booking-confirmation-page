@@ -50,7 +50,7 @@ export default function ThemeToggle(props: Props) {
 				preventScroll={false}>
 				<DropdownMenu.Trigger
 					class={classList(
-						"flex justify-between items-center gap-2 hover:bg-bg-card px-4 py-2.5 border border-border-muted rounded-xl text-text-muted hover:text-text focus-visible:text-text transition-colors duration-200 cursor-pointer trim-capital squircle",
+						"trim-capital squircle flex cursor-pointer items-center justify-between gap-2 rounded-xl border border-border-muted px-4 py-2.5 text-text-muted transition-colors duration-200 hover:bg-bg-card hover:text-text focus-visible:text-text",
 						{ "bg-bg-card": open() },
 						{ "inline-full": props.isSidebar },
 					)}>
@@ -70,12 +70,12 @@ export default function ThemeToggle(props: Props) {
 					</span>
 				</DropdownMenu.Trigger>
 				<DropdownMenu.Portal>
-					<DropdownMenu.Content class="gap-1 grid bg-bg-card p-2 border border-border-muted rounded-xl text-text-muted cursor-pointer squircle">
+					<DropdownMenu.Content class="squircle grid cursor-pointer gap-1 rounded-xl border border-border-muted bg-bg-card p-2 text-text-muted">
 						<DropdownMenu.Item
 							onSelect={() => handleSelect("light")}
 							class={classList(
-								"hover:bg-bg-gray focus-visible:bg-bg-gray p-2 rounded-xl hover:text-text focus-visible:text-text transition-colors duration-200 squircle",
-								{ "text-text bg-bg-gray": theme() === "light" },
+								"squircle rounded-xl p-2 transition-colors duration-200 hover:bg-bg-gray hover:text-text focus-visible:bg-bg-gray focus-visible:text-text",
+								{ "bg-bg-gray text-text": theme() === "light" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2 text-center">
 								<span>
@@ -87,8 +87,8 @@ export default function ThemeToggle(props: Props) {
 						<DropdownMenu.Item
 							onSelect={() => handleSelect("dark")}
 							class={classList(
-								"hover:bg-bg-gray focus-visible:bg-bg-gray p-2 rounded-xl hover:text-text focus-visible:text-text transition-colors duration-200 squircle",
-								{ "text-text bg-bg-gray": theme() === "dark" },
+								"squircle rounded-xl p-2 transition-colors duration-200 hover:bg-bg-gray hover:text-text focus-visible:bg-bg-gray focus-visible:text-text",
+								{ "bg-bg-gray text-text": theme() === "dark" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2 text-center">
 								<span>
@@ -100,8 +100,8 @@ export default function ThemeToggle(props: Props) {
 						<DropdownMenu.Item
 							onSelect={() => handleSelect("system")}
 							class={classList(
-								"hover:bg-bg-gray focus-visible:bg-bg-gray p-2 rounded-xl hover:text-text focus-visible:text-text transition-colors duration-200 squircle",
-								{ "text-text bg-bg-gray": theme() === "system" },
+								"squircle rounded-xl p-2 transition-colors duration-200 hover:bg-bg-gray hover:text-text focus-visible:bg-bg-gray focus-visible:text-text",
+								{ "bg-bg-gray text-text": theme() === "system" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2 text-center">
 								<span>

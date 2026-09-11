@@ -13,7 +13,7 @@ export default function WeatherWidget(props: Props) {
 	return (
 		<div
 			class={classList(
-				"relative gap-1 grid bg-bg-weather px-4 py-2.5 rounded-2xl overflow-clip text-text scheme-light squircle",
+				"scheme-light squircle relative grid gap-1 overflow-clip rounded-2xl bg-bg-weather px-4 py-2.5 text-text",
 				props.class,
 			)}>
 			<span class="font-dm-mono text-2xs text-text-muted uppercase">

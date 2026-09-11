@@ -15,16 +15,16 @@ export function getRouter() {
 		defaultPreloadStaleTime: 0,
 		defaultNotFoundComponent: () => {
 			return (
-				<div class="flex flex-col justify-center items-center p-8 font-dm-sans text-center">
+				<div class="flex flex-col items-center justify-center p-8 text-center font-dm-sans">
 					<span class="font-medium text-4xl">404</span>
-					<h1 class="font-medium mbs-8">Page Not Found</h1>
+					<h1 class="mbs-8 font-medium">Page Not Found</h1>
 					<p class="mbs-12">
 						The page you are looking for doesn't exist. Click button bellow to
 						go to the homepage
 					</p>
 					<Link
 						to="/"
-						class="min-block-9.5 flex items-center bg-text hover:bg-bg-button-primary-hover focus-visible:bg-bg-button-primary-hover px-4 rounded-xl font-medium text-bg-surface active:scale-95 transition-all duration-200 mbs-8 squircle">
+						class="min-block-9.5 mbs-8 squircle flex items-center rounded-xl bg-text px-4 font-medium text-bg-surface transition-all duration-200 hover:bg-bg-button-primary-hover focus-visible:bg-bg-button-primary-hover active:scale-95">
 						Back To Homepage
 					</Link>
 				</div>
@@ -32,10 +32,10 @@ export function getRouter() {
 		},
 		defaultErrorComponent: ({ error, reset }) => {
 			return (
-				<div class="flex flex-col justify-center items-center p-8 font-dm-sans text-center">
+				<div class="flex flex-col items-center justify-center p-8 text-center font-dm-sans">
 					<p class="text-text-error">{error.message}</p>
 					<Button
-						class="rounded-xl text-base squircle"
+						class="squircle rounded-xl text-base"
 						onClick={() => {
 							reset();
 						}}>
