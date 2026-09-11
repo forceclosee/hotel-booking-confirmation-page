@@ -1,6 +1,8 @@
 import { createSignal, Show } from "solid-js";
 import { Tooltip } from "@kobalte/core/tooltip";
 
+import { toast } from "#/components/ui/Toast";
+
 import { ClipboardCheck, Copy } from "lucide-solid";
 import WifiIcon from "#/icon/icon-wifi.svg?solid";
 
@@ -8,18 +10,55 @@ import Card from "#/components/ui/Card";
 import Button from "#/components/ui/Button";
 
 export default function WifiCard() {
-	let inputRef!: HTMLInputElement;
-
 	const [copied, setCopied] = createSignal(false);
 
-	const handleCopyPassword = () => {
-		navigator.clipboard.writeText(inputRef.value);
+	let inputRef: HTMLInputElement | undefined;
+
+	const copyPassword = async () => {
+		try {
+			if (!inputRef) {
+				throw new Error("Password Input is missing");
+			}
+
+			if (!navigator.clipboard || !navigator.clipboard.writeText) {
+				throw new Error("Clipboard API is not supported");
+			}
+
+			await navigator.clipboard.writeText(inputRef.value);
+			return { success: true, message: "Password copied" };
+		} catch (error) {
+			if (error instanceof Error) {
+				throw new Error(error.message);
+			} else {
+				throw new Error("Something went wrong, Please try again");
+			}
+		}
+	};
+
+	const handleCopyPassword = async () => {
+		await copyPassword();
 
 		setCopied(true);
 
 		setTimeout(() => {
 			setCopied(false);
 		}, 2000);
+
+		toast.promise(copyPassword, {
+			success: (data) => {
+				return { title: data.message };
+			},
+
+			error: (error) => {
+				return {
+					title: "Failed to copy password",
+					description:
+						error instanceof Error
+							? error.message
+							: "Something went wrong, Please try again",
+				};
+			},
+		});
 	};
 
 	return (
@@ -29,34 +68,34 @@ export default function WifiCard() {
 			number="02"
 			title="Le Soleil · Guest"
 			subtitle="Password below">
-			<div class="gap-1 grid">
-				<div class="min-block-8 flex justify-between items-center bg-bg-gray px-2 rounded-xl squircle">
+			<div class="grid gap-1">
+				<div class="min-block-8 squircle flex items-center justify-between rounded-xl bg-bg-gray px-2">
 					<label
 						for="network"
-						class="font-dm-mono text-text-muted text-sm uppercase tracking-wider trim-capital">
+						class="trim-capital font-dm-mono text-sm text-text-muted uppercase tracking-wider">
 						Network
 					</label>
 					<input
 						type="text"
 						id="network"
-						class="font-dm-sans text-[0.8125rem] text-end"
+						class="text-end font-dm-sans text-[0.8125rem]"
 						name="network"
 						value="Le Soleil · Guest"
 						readOnly
 					/>
 				</div>
 
-				<div class="min-block-8 flex items-center gap-2.5 bg-bg-gray px-2 rounded-xl squircle">
+				<div class="min-block-8 squircle flex items-center gap-2.5 rounded-xl bg-bg-gray px-2">
 					<label
 						for="password"
-						class="font-dm-mono text-text-muted text-sm uppercase tracking-wider trim-capital">
+						class="trim-capital font-dm-mono text-sm text-text-muted uppercase tracking-wider">
 						Password
 					</label>
 					<input
 						ref={inputRef}
 						type="text"
 						id="password"
-						class="ms-auto font-dm-sans text-[0.8125rem] text-end"
+						class="ms-auto text-end font-dm-sans text-[0.8125rem]"
 						name="password"
 						value="soleil-2026"
 						readOnly
@@ -67,7 +106,7 @@ export default function WifiCard() {
 							<Tooltip.Trigger
 								as={Button}
 								variant="secondary"
-								class="min-block-0 p-1 border-text-muted/20 rounded-xl squircle"
+								class="min-block-0 squircle rounded-xl border-text-muted/20 p-1"
 								aria-label="Copy password"
 								disabled={copied()}
 								onClick={handleCopyPassword}>
@@ -79,9 +118,9 @@ export default function WifiCard() {
 							</Tooltip.Trigger>
 
 							<Tooltip.Portal>
-								<Tooltip.Content class="bg-bg-tooltip rounded-lg squircle data-[expanded]:show-tooltip hide-tooltip">
+								<Tooltip.Content class="squircle data-expanded:show-tooltip hide-tooltip rounded-lg bg-bg-info">
 									<Tooltip.Arrow size={20} />
-									<span class="block p-2 font-dm-sans font-medium text-text-inverse text-xs trim-text">
+									<span class="trim-text block p-2 font-dm-sans font-medium text-text-inverse text-xs">
 										Copy password
 									</span>
 								</Tooltip.Content>

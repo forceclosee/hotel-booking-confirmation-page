@@ -40,11 +40,14 @@
 	--color-bg-terracotta: light-dark(hsl(15, 69%, 37%), hsl(15, 55%, 65%));
 	--color-bg-welcome-card-dark: hsl(15, 69%, 28%);
 	--color-bg-welcome-card-light: hsl(18, 62%, 49%);
-	--color-bg-tooltip: light-dark(var(--color-blue-900), var(--color-blue-100));
 	--color-bg-gray: light-dark(hsl(30, 24%, 93%), hsl(30, 20%, 11%));
+	--color-bg-info: light-dark(oklch(0.4 0.07 260), oklch(0.8 0.07 260));
+	--color-bg-success: light-dark(oklch(0.4 0.07 160), oklch(0.8 0.07 160));
+	--color-bg-error: light-dark(oklch(0.4 0.07 30), oklch(0.8 0.07 30));
 
 	--color-text: light-dark(hsl(33, 15%, 15%), hsl(33, 15%, 84%));
 	--color-text-inverse: light-dark(hsl(33, 15%, 84%), hsl(33, 15%, 15%));
+	--color-text-inverse-muted: light-dark(hsl(33, 15%, 74%), hsl(33, 15%, 25%));
 	--color-text-muted: light-dark(hsl(33, 5%, 41%), hsl(33, 5%, 59%));
 	--color-text-terracotta: light-dark(hsl(15, 74%, 41%), hsl(15, 67%, 65%));
 	--color-text-sun: hsl(44, 84%, 75%);
@@ -86,6 +89,7 @@
 	--spacing-fluid-300: clamp(1rem, 0.1332rem + 3.6979vw, 2.5rem);
 
 	--spacing-header-height: 4.5625rem;
+	--spacing-toast-viewport: 2rem;
 
 	/* z-index */
 	--z-card: 10;
@@ -311,5 +315,77 @@
 	}
 	to {
 		opacity: 0;
+	}
+}
+
+@utility toast-progress-transition {
+	transition: inline-size 250ms linear;
+}
+
+@utility show-toast {
+	@media (prefers-reduced-motion: no-preference) {
+		animation: toast-show-no-preference 0.2s ease-out;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		animation: toast-show-reduce 0.2s ease-out;
+	}
+}
+
+@keyframes toast-show-no-preference {
+	from {
+		translate: 0 calc(100% + var(--spacing-toast-viewport));
+	}
+	to {
+		translate: 0 0;
+	}
+}
+
+@keyframes toast-show-reduce {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@utility hide-toast {
+	@media (prefers-reduced-motion: no-preference) {
+		animation: toast-hide-no-preference 0.2s ease-out forwards;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		animation: toast-hide-reduce 0.2s ease-out forwards;
+	}
+}
+
+@keyframes toast-hide-no-preference {
+	from {
+		opacity: 1;
+		scale: 1;
+	}
+	to {
+		opacity: 0;
+		scale: 0.5;
+	}
+}
+@keyframes toast-hide-reduce {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@utility swipe-out {
+	animation: swipe-out 0.1s ease-out;
+}
+
+@keyframes swipe-out {
+	from {
+		transform: translateX(var(--kb-toast-swipe-end-x));
+	}
+	to {
+		transform: translateX(calc(100% + var(--spacing-toast-viewport)));
 	}
 }

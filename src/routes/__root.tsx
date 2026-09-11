@@ -11,6 +11,8 @@ import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools";
 import { HydrationScript } from "solid-js/web";
 import { Suspense, type JSXElement } from "solid-js";
 
+import { Toast } from "@kobalte/core/toast";
+
 import favicon from "/icon.svg";
 import globalCss from "#/styles/global.css?url";
 
@@ -132,12 +134,15 @@ function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 			</head>
 			<body class="text-text">
 				<Suspense>
-					<div class="min-block-svh lg:max-inline-[90rem] grid lg:grid-cols-[16.25rem_1fr] grid-rows-[auto_1fr_auto] lg:grid-rows-1 bg-bg-page mx-auto">
+					<div class="min-block-svh lg:max-inline-[90rem] mx-auto grid grid-rows-[auto_1fr_auto] bg-bg-page lg:grid-cols-[16.25rem_1fr] lg:grid-rows-1">
 						<Header />
 						<DesktopSidebar />
 						{children}
 						<MobileNavigationBar />
 					</div>
+					<Toast.Region class="fixed inset-be-toast-viewport inset-e-toast-viewport">
+						<Toast.List class="grid gap-2" />
+					</Toast.Region>
 				</Suspense>
 				<TanStackRouterDevtools />
 				<Scripts />
