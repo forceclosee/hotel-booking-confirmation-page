@@ -17,7 +17,9 @@ export default function WelcomeBanner(props: Props) {
 				</h1>
 			</div>
 			<div class="flex items-center gap-4 self-center">
-				<Button variant="secondary">Print receipt</Button>
+				<Button variant="secondary" onClick={() => window.print()}>
+					Print receipt
+				</Button>
 				<Button class="trim-capital">Add to calendar</Button>
 			</div>
 		</section>

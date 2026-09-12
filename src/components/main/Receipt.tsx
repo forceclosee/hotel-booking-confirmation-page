@@ -8,7 +8,7 @@ export default function Receipt(props: Props) {
 	return (
 		<div
 			class={classList(
-				"inline-full max-inline-[25rem] pbs-7 pbe-4 -rotate-2 rounded-[1.25rem] bg-bg-card px-5.5 text-text lg:-rotate-4",
+				"inline-full max-inline-[25rem] pbs-7 pbe-4 receipt print:scheme-light print:max-inline-none print:zoom-[0.8] -rotate-2 rounded-[1.25rem] bg-bg-card px-5.5 text-text lg:-rotate-4 print:rotate-0 print:rounded-none print:bg-transparent",
 				props.class,
 			)}>
 			<div class="pbe-3.5 grid grid-cols-[1fr_auto] font-dm-mono text-text-muted">

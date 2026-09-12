@@ -145,6 +145,12 @@
 		outline-color: var(--color-text-terracotta);
 	}
 
+	/* DEFAULT PRINT PAGE */
+	@page {
+		size: 80mm 100mm;
+		margin: 0;
+	}
+
 	/* TYPOGRAPHY */
 	h1 {
 		@apply text-[2.35rem];

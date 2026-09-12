@@ -127,14 +127,14 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 	return (
-		<html lang="en" class="bg-bg-surface">
+		<html lang="en" class="bg-bg-surface print:bg-transparent">
 			<head>
 				<HydrationScript />
 				<HeadContent />
 			</head>
 			<body class="text-text">
 				<Suspense>
-					<div class="min-block-svh lg:max-inline-[90rem] mx-auto grid grid-rows-[auto_1fr_auto] bg-bg-page lg:grid-cols-[16.25rem_1fr] lg:grid-rows-1">
+					<div class="min-block-svh lg:max-inline-[90rem] mx-auto grid grid-rows-[auto_1fr_auto] bg-bg-page lg:grid-cols-[16.25rem_1fr] lg:grid-rows-1 print:block print:bg-transparent">
 						<Header />
 						<DesktopSidebar />
 						{children}
