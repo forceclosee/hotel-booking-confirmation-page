@@ -24,6 +24,7 @@
 		"@tanstack/solid-router": "latest",
 		"@tanstack/solid-router-devtools": "latest",
 		"@tanstack/solid-start": "latest",
+		"ics": "^3.12.0",
 		"lucide-solid": "^1.38.0",
 		"solid-focus-trap": "^0.1.9",
 		"solid-js": "^1.9.12",
