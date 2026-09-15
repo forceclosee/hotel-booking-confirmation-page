@@ -140,7 +140,7 @@ function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 						{children}
 						<MobileNavigationBar />
 					</div>
-					<Toast.Region class="fixed inset-be-toast-viewport inset-e-toast-viewport">
+					<Toast.Region class="fixed inset-be-toast-viewport inset-e-toast-viewport z-toast">
 						<Toast.List class="grid gap-2" />
 					</Toast.Region>
 				</Suspense>
