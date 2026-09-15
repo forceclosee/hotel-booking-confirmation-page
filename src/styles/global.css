@@ -93,7 +93,9 @@
 
 	/* z-index */
 	--z-card: 10;
-	--z-mobile-nav: 500;
+	--z-dropdown: 100;
+	--z-mobile-nav: 400;
+	--z-toast: 500;
 }
 
 @layer base {
@@ -255,9 +257,16 @@
 @utility z-card {
 	z-index: var(--z-card);
 }
+@utility z-dropdown {
+	z-index: var(--z-dropdown);
+}
 
 @utility z-mobile-nav {
 	z-index: var(--z-mobile-nav);
+}
+
+@utility z-toast {
+	z-index: var(--z-toast);
 }
 
 @utility show-tooltip {
