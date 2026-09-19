@@ -13,11 +13,11 @@ export default function Construction() {
 				/>
 				<a
 					href="https://www.vecteezy.com/free-vector/page-under-construction"
-					class="hover-underline-2 pbe-1 text-3xs text-text-muted">
+					class="hover-underline-2 pbe-1 text-center text-3xs text-text-muted">
 					Page Under Construction Vectors by Vecteezy
 				</a>
 			</div>
-			<h1>Page Under Construction</h1>
+			<h1 class="text-center">Page Under Construction</h1>
 		</div>
 	);
 }

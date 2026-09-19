@@ -142,6 +142,16 @@
 		}
 	}
 
+	/* Improve media defaults */
+	img,
+	picture,
+	video,
+	canvas,
+	svg {
+		display: block;
+		inline-size: 100%;
+	}
+
 	/* improve focus styles */
 	:focus-visible {
 		outline-offset: 3px;
