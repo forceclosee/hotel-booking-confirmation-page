@@ -1,76 +1,94 @@
+import { useQuery } from "@tanstack/solid-query";
+import { ErrorBoundary, Show, Suspense } from "solid-js";
+
 import { classList } from "#/utils/class-helper";
-import { createUniqueId } from "solid-js";
+import { getCassisHourlyWeather } from "#/utils/cassis-weather.functions";
+import { getAverageDailyTemperature, getWeatherDetails } from "#/utils/weather";
+
+import Button from "#/components/ui/Button";
+import Skeleton from "#/components/ui/Skeleton";
 
 type Props = {
 	class?: string;
 };
 
 export default function WeatherWidget(props: Props) {
-	const uniqueId = createUniqueId();
-	const filterId = `weather-filter-${uniqueId}`;
-	const gradientId = `weather-gradient-${uniqueId}`;
-
 	return (
 		<div
 			class={classList(
-				"scheme-light squircle relative grid gap-1 overflow-clip rounded-2xl bg-bg-weather px-4 py-2.5 text-text",
+				"scheme-light squircle relative grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 overflow-clip rounded-2xl bg-bg-weather px-4 py-2.5 text-text",
 				props.class,
 			)}>
-			<span class="font-dm-mono text-2xs text-text-muted uppercase">
+			<ErrorBoundary
+				fallback={(err, reset) => (
+					<div class="min-block-[6.3115rem] flex flex-col items-center justify-center gap-4 text-center font-dm-sans">
+						<p class="text-text-error">{err.message}</p>
+						<Button
+							class="squircle rounded-lg border-text-muted"
+							onClick={() => reset()}>
+							Try again
+						</Button>
+					</div>
+				)}>
+				<Suspense fallback={<WeatherWidgetSkeleton />}>
+					<WeatherQuery />
+				</Suspense>
+			</ErrorBoundary>
+		</div>
+	);
+}
+
+function WeatherQuery() {
+	const weatherQuery = useQuery(() => ({
+		queryKey: ["weather"],
+		queryFn: () => getCassisHourlyWeather(),
+		staleTime: 60 * 60 * 1000, // 1 hour
+		refetchOnWindowFocus: false,
+		throwOnError: true,
+	}));
+
+	const averageTemperature = () =>
+		getAverageDailyTemperature(weatherQuery.data?.hourly.temperature_2m) ?? "-";
+
+	const temperatureUnit = () => weatherQuery.data?.hourly_units.temperature_2m;
+
+	const weatherDetails = () =>
+		getWeatherDetails(weatherQuery.data?.daily.weather_code[0]);
+
+	return (
+		<Show when={weatherQuery.data} fallback={<WeatherWidgetSkeleton />}>
+			<span class="col-span-2 font-dm-mono text-2xs text-text-muted uppercase">
 				Today in Cassis
 			</span>
-			<span class="text-3xl">27°</span>
-			<span class="font-dm-sans text-[0.8125rem] text-text-muted">
-				Sunny · light breeze
+
+			<span class="text-3xl">
+				{averageTemperature()}
+				<Show when={averageTemperature() !== "-"}>{temperatureUnit()}</Show>
 			</span>
-			<svg
-				class="absolute -inset-bs-[1.8rem] -inset-e-[1rem]"
-				xmlns="http://www.w3.org/2000/svg"
-				width="80"
-				height="80"
-				fill="none"
-				viewBox="0 0 80 80"
-				aria-hidden="true">
-				<g filter={`url(#${filterId})`}>
-					<rect width="80" height="80" fill={`url(#${gradientId})`} rx="40" />
-				</g>
-				<defs>
-					<radialGradient
-						id={gradientId}
-						cx="0"
-						cy="0"
-						r="1"
-						gradientTransform="translate(32 32)scale(67.8823)"
-						gradientUnits="userSpaceOnUse">
-						<stop stop-color="#ffde7a" />
-						<stop offset=".7" stop-color="#edb63a" />
-					</radialGradient>
-					<filter
-						id={filterId}
-						width="80"
-						height="80"
-						x="0"
-						y="0"
-						color-interpolation-filters="sRGB"
-						filterUnits="userSpaceOnUse">
-						<feFlood flood-opacity="0" result="BackgroundImageFix" />
-						<feBlend
-							in="SourceGraphic"
-							in2="BackgroundImageFix"
-							result="shape"
-						/>
-						<feColorMatrix
-							in="SourceAlpha"
-							result="hardAlpha"
-							values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-						/>
-						<feOffset dx="-6" dy="-8" />
-						<feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-						<feColorMatrix values="0 0 0 0 0.760784 0 0 0 0 0.352941 0 0 0 0 0.180392 0 0 0 0.18 0" />
-						<feBlend in2="shape" result="effect1_innerShadow_84_350" />
-					</filter>
-				</defs>
-			</svg>
-		</div>
+
+			<img
+				src={weatherDetails().image}
+				alt={weatherDetails().description}
+				class="inline-20 block-14 translate-x-4 object-cover drop-shadow-(--weather-icon-drop-shadow)"
+				width={100}
+				height={100}
+			/>
+
+			<span class="col-span-2 font-dm-sans text-[0.8125rem] text-text-muted">
+				{weatherDetails().description}
+			</span>
+		</Show>
+	);
+}
+
+// skeleton loader
+function WeatherWidgetSkeleton() {
+	return (
+		<>
+			<Skeleton width={115} height={18} class="mbs-1 col-span-2" />
+			<Skeleton width={75} height={32} />
+			<Skeleton variant="circle" height={52} />
+			<Skeleton width={100} height={16} class="mbe-1 col-span-2" />
+		</>
 	);
 }

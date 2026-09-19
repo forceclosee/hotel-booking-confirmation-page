@@ -96,6 +96,9 @@
 	--z-dropdown: 100;
 	--z-mobile-nav: 400;
 	--z-toast: 500;
+
+	/* drop shadow */
+	--weather-icon-drop-shadow: 0 0 15px oklch(0 0 none / 0.6);
 }
 
 @layer base {
@@ -402,5 +405,18 @@
 	}
 	to {
 		transform: translateX(calc(100% + var(--spacing-toast-viewport)));
+	}
+}
+
+@utility wave {
+	animation: wave 2s linear infinite;
+}
+
+@keyframes wave {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
 	}
 }

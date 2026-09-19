@@ -31,6 +31,7 @@ import "@fontsource-variable/dm-sans/wght.css";
 // dm mono static
 import "@fontsource/dm-mono/400.css";
 import "@fontsource/dm-mono/500.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/solid-query";
 
 export const Route = createRootRouteWithContext()({
 	head: () => ({
@@ -106,26 +107,30 @@ const themeScript = `(function() {
   } catch (e) {}
 })();`;
 
-function ThemeProvider({ children }: { children: JSXElement }) {
+function ThemeProvider(props: { children: JSXElement }) {
 	return (
 		<>
 			<ScriptOnce children={themeScript} />
-			{children}
+			{props.children}
 		</>
 	);
 }
 
+const queryClient = new QueryClient();
+
 function RootComponent() {
 	return (
-		<RootDocument>
-			<ThemeProvider>
-				<Outlet />
-			</ThemeProvider>
-		</RootDocument>
+		<QueryClientProvider client={queryClient}>
+			<RootDocument>
+				<ThemeProvider>
+					<Outlet />
+				</ThemeProvider>
+			</RootDocument>
+		</QueryClientProvider>
 	);
 }
 
-function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
+function RootDocument(props: Readonly<{ children: JSXElement }>) {
 	return (
 		<html lang="en" class="bg-bg-surface print:bg-transparent">
 			<head>
@@ -137,7 +142,7 @@ function RootDocument({ children }: Readonly<{ children: JSXElement }>) {
 					<div class="min-block-svh lg:max-inline-[90rem] mx-auto grid grid-rows-[auto_1fr_auto] bg-bg-page lg:grid-cols-[16.25rem_1fr] lg:grid-rows-1 print:block print:bg-transparent">
 						<Header />
 						<DesktopSidebar />
-						{children}
+						{props.children}
 						<MobileNavigationBar />
 					</div>
 					<Toast.Region class="fixed inset-be-toast-viewport inset-e-toast-viewport z-toast">
