@@ -10,33 +10,79 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AroundTownRouteImport } from './routes/around-town'
+import { Route as BreakfastRouteImport } from './routes/breakfast'
+import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as TheHouseRouteImport } from './routes/the-house'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AroundTownRoute = AroundTownRouteImport.update({
+  id: '/around-town',
+  path: '/around-town',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BreakfastRoute = BreakfastRouteImport.update({
+  id: '/breakfast',
+  path: '/breakfast',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesRoute = MessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheHouseRoute = TheHouseRouteImport.update({
+  id: '/the-house',
+  path: '/the-house',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/around-town': typeof AroundTownRoute
+  '/breakfast': typeof BreakfastRoute
+  '/messages': typeof MessagesRoute
+  '/the-house': typeof TheHouseRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/around-town': typeof AroundTownRoute
+  '/breakfast': typeof BreakfastRoute
+  '/messages': typeof MessagesRoute
+  '/the-house': typeof TheHouseRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/around-town': typeof AroundTownRoute
+  '/breakfast': typeof BreakfastRoute
+  '/messages': typeof MessagesRoute
+  '/the-house': typeof TheHouseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/around-town' | '/breakfast' | '/messages' | '/the-house'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/around-town' | '/breakfast' | '/messages' | '/the-house'
+  id:
+    | '__root__'
+    | '/'
+    | '/around-town'
+    | '/breakfast'
+    | '/messages'
+    | '/the-house'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AroundTownRoute: typeof AroundTownRoute
+  BreakfastRoute: typeof BreakfastRoute
+  MessagesRoute: typeof MessagesRoute
+  TheHouseRoute: typeof TheHouseRoute
 }
 
 declare module '@tanstack/solid-router' {
@@ -48,11 +94,43 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/around-town': {
+      id: '/around-town'
+      path: '/around-town'
+      fullPath: '/around-town'
+      preLoaderRoute: typeof AroundTownRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/breakfast': {
+      id: '/breakfast'
+      path: '/breakfast'
+      fullPath: '/breakfast'
+      preLoaderRoute: typeof BreakfastRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages': {
+      id: '/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-house': {
+      id: '/the-house'
+      path: '/the-house'
+      fullPath: '/the-house'
+      preLoaderRoute: typeof TheHouseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AroundTownRoute: AroundTownRoute,
+  BreakfastRoute: BreakfastRoute,
+  MessagesRoute: MessagesRoute,
+  TheHouseRoute: TheHouseRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
