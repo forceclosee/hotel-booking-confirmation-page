@@ -93,8 +93,8 @@
 
 	/* z-index */
 	--z-card: 10;
-	--z-dropdown: 100;
-	--z-mobile-nav: 400;
+	--z-nav: 100;
+	--z-dropdown: 200;
 	--z-toast: 500;
 
 	/* drop shadow */
@@ -264,8 +264,8 @@
 	z-index: var(--z-dropdown);
 }
 
-@utility z-mobile-nav {
-	z-index: var(--z-mobile-nav);
+@utility z-nav {
+	z-index: var(--z-nav);
 }
 
 @utility z-toast {
@@ -418,5 +418,25 @@
 	}
 	100% {
 		background-position: -200% 0;
+	}
+}
+
+@utility root-scroll {
+	container: root-scroll / scroll-state;
+}
+
+@utility auto-hide-header {
+	/* hide header on scroll down and appear back up on scroll up for supported browser */
+	/* header will stay sticky for unsupported browser */
+	@supports (container-type: scroll-state) {
+		/* Hide on scroll down */
+		@container root-scroll scroll-state(scrolled: block-end) {
+			translate: 0 -100%;
+		}
+
+		/* Appear on scroll back up */
+		@container root-scroll scroll-state(scrolled: block-start) {
+			translate: 0 0;
+		}
 	}
 }

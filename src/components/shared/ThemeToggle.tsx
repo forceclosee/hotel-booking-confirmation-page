@@ -1,9 +1,9 @@
-import { createSignal, Match, onMount, Switch } from "solid-js";
+import { createSignal, Match, onMount, Show, Switch } from "solid-js";
 
 import createPreventScroll from "solid-prevent-scroll";
 import { DropdownMenu } from "@kobalte/core/dropdown-menu";
 
-import { Laptop, Moon, Sun } from "lucide-solid";
+import { ChevronDown, Laptop, Moon, Sun } from "lucide-solid";
 import { classList } from "#/utils/class-helper";
 
 type Props = {
@@ -18,6 +18,7 @@ export default function ThemeToggle(props: Props) {
 	);
 
 	type Theme = "light" | "dark" | "system";
+
 	const [theme, setTheme] = createSignal<Theme>("system");
 
 	// get saved theme from local storage
@@ -50,12 +51,13 @@ export default function ThemeToggle(props: Props) {
 				preventScroll={false}>
 				<DropdownMenu.Trigger
 					class={classList(
-						"trim-capital squircle flex cursor-pointer items-center justify-between gap-2 rounded-xl border border-border-muted px-4 py-2.5 font-dm-sans text-text-muted transition-colors duration-200 hover:bg-bg-card hover:text-text focus-visible:text-text",
+						"trim-capital squircle flex cursor-pointer items-center gap-2 rounded-xl border border-border-muted py-2.5 ps-4 pe-3 font-dm-sans text-text-muted transition-colors duration-200 hover:bg-bg-card hover:text-text focus-visible:text-text",
 						{ "bg-bg-card": open() },
 						{ "inline-full": props.isSidebar },
 					)}>
-					<span>Theme: </span>
-					<span>
+					<span class="hidden min-[23rem]:inline">Theme:</span>
+
+					<span class="flex items-center gap-2">
 						<Switch>
 							<Match when={theme() === "light"}>
 								<Sun class="block-[1.3em] inline-auto" />
@@ -67,10 +69,28 @@ export default function ThemeToggle(props: Props) {
 								<Laptop class="block-[1.3em] inline-auto" />
 							</Match>
 						</Switch>
+
+						<Show when={props.isSidebar}>
+							<Switch>
+								<Match when={theme() === "light"}>
+									<span>Light</span>
+								</Match>
+								<Match when={theme() === "dark"}>
+									<span>Dark</span>
+								</Match>
+								<Match when={theme() === "system"}>
+									<span>System</span>
+								</Match>
+							</Switch>
+						</Show>
 					</span>
+
+					<DropdownMenu.Icon class="ms-auto">
+						<ChevronDown class="block-[1.3em]" />
+					</DropdownMenu.Icon>
 				</DropdownMenu.Trigger>
 				<DropdownMenu.Portal>
-					<DropdownMenu.Content class="squircle grid cursor-pointer gap-1 rounded-xl border border-border-muted bg-bg-card p-2 font-dm-sans text-text-muted">
+					<DropdownMenu.Content class="squircle z-dropdown grid cursor-pointer gap-1 rounded-xl border border-border-muted bg-bg-card p-2 font-dm-sans text-text-muted">
 						<DropdownMenu.Item
 							onSelect={() => handleSelect("light")}
 							class={classList(
@@ -78,7 +98,7 @@ export default function ThemeToggle(props: Props) {
 								{ "bg-bg-gray text-text": theme() === "light" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2">
-								<Sun class="inline-[1.3em]" />
+								<Sun class="block-[1.3em]" />
 								<span>Light</span>
 							</DropdownMenu.ItemLabel>
 						</DropdownMenu.Item>
@@ -90,7 +110,7 @@ export default function ThemeToggle(props: Props) {
 								{ "bg-bg-gray text-text": theme() === "dark" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2">
-								<Moon class="inline-[1.3em]" />
+								<Moon class="block-[1.3em]" />
 								<span>Dark</span>
 							</DropdownMenu.ItemLabel>
 						</DropdownMenu.Item>
@@ -102,7 +122,7 @@ export default function ThemeToggle(props: Props) {
 								{ "bg-bg-gray text-text": theme() === "system" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2">
-								<Laptop class="inline-[1.3em]" />
+								<Laptop class="block-[1.3em]" />
 								<span>System</span>
 							</DropdownMenu.ItemLabel>
 						</DropdownMenu.Item>

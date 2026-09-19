@@ -132,7 +132,7 @@ function RootComponent() {
 
 function RootDocument(props: Readonly<{ children: JSXElement }>) {
 	return (
-		<html lang="en" class="bg-bg-surface print:bg-transparent">
+		<html lang="en" class="root-scroll bg-bg-surface print:bg-transparent">
 			<head>
 				<HydrationScript />
 				<HeadContent />

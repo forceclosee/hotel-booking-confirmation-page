@@ -31,14 +31,14 @@ export default function WeatherWidget(props: Props) {
 					</div>
 				)}>
 				<Suspense fallback={<WeatherWidgetSkeleton />}>
-					<WeatherQuery />
+					<WeatherContent />
 				</Suspense>
 			</ErrorBoundary>
 		</div>
 	);
 }
 
-function WeatherQuery() {
+function WeatherContent() {
 	const weatherQuery = useQuery(() => ({
 		queryKey: ["weather"],
 		queryFn: () => getCassisHourlyWeather(),

@@ -19,7 +19,7 @@ export default function Header() {
 
 	return (
 		<>
-			<header class="min-block-header-height flex items-center gap-4 border-be border-border px-fluid-300 lg:hidden print:hidden">
+			<header class="min-block-header-height auto-hide-header sticky inset-bs-0 z-nav flex items-center gap-4 border-be border-border bg-bg-page px-fluid-300 transition-transform duration-500 lg:hidden print:hidden">
 				<SiteName />
 				<ThemeToggle class="ms-auto" />
 				<Button
