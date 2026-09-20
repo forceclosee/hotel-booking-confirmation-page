@@ -98,7 +98,7 @@ export default function ThemeToggle(props: Props) {
 								{ "bg-bg-gray text-text": theme() === "light" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2">
-								<Sun class="block-[1.3em]" />
+								<Sun class="block-[1.3em] inline-auto" />
 								<span>Light</span>
 							</DropdownMenu.ItemLabel>
 						</DropdownMenu.Item>
@@ -110,7 +110,7 @@ export default function ThemeToggle(props: Props) {
 								{ "bg-bg-gray text-text": theme() === "dark" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2">
-								<Moon class="block-[1.3em]" />
+								<Moon class="block-[1.3em] inline-auto" />
 								<span>Dark</span>
 							</DropdownMenu.ItemLabel>
 						</DropdownMenu.Item>
@@ -122,7 +122,7 @@ export default function ThemeToggle(props: Props) {
 								{ "bg-bg-gray text-text": theme() === "system" },
 							)}>
 							<DropdownMenu.ItemLabel class="flex items-center gap-2">
-								<Laptop class="block-[1.3em]" />
+								<Laptop class="block-[1.3em] inline-auto" />
 								<span>System</span>
 							</DropdownMenu.ItemLabel>
 						</DropdownMenu.Item>

@@ -16,4 +16,7 @@ export default defineConfig({
 		solidPlugin({ ssr: true }),
 		solidSVG(),
 	],
+	build: {
+		cssTarget: "chrome123",
+	},
 });

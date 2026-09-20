@@ -71,7 +71,7 @@ export default function Receipt(props: Props) {
 					Paid · Wise · GBP
 				</span>
 				<svg
-					class="scheme-light bg-bg-card text-text"
+					class="scheme-light max-inline-max bg-bg-card text-text"
 					xmlns="http://www.w3.org/2000/svg"
 					width="93"
 					height="28"

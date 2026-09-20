@@ -30,7 +30,7 @@ function Home() {
 
 				<div class="hidden items-center gap-2 @min-4xl/main:motion-safe:flex print:hidden">
 					<SparkleIcon class="text-text-terracotta" />
-					<span class="font-dm-mono text-[0.625rem] text-text-muted uppercase tracking-widest">
+					<span class="shrink-0 font-dm-mono text-[0.625rem] text-text-muted uppercase tracking-widest">
 						hover to fan
 					</span>
 					<SparkleIcon class="text-text-terracotta" />
