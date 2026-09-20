@@ -52,7 +52,8 @@ export const Route = createRootRouteWithContext()({
 			},
 			{
 				name: "description",
-				content: "",
+				content:
+					"Print-friendly receipt, one-click add to calendar, and a live weather widget for the host city.",
 			},
 
 			// OG Tags
@@ -62,15 +63,18 @@ export const Route = createRootRouteWithContext()({
 			},
 			{
 				property: "og:description",
-				content: "",
+				content:
+					"Print-friendly receipt, one-click add to calendar, and a live weather widget for the host city.",
 			},
 			{
 				property: "og:image",
-				content: "" /* isi image */,
+				content:
+					"https://res.cloudinary.com/dspqgpnvq/image/upload/v1789917603/hotel-booking-confirmation-page_yclxtj.png",
 			},
 			{
 				property: "og:url",
-				content: "" /* isi live site url */,
+				content:
+					"https://hotel-booking-confirmation-page.forceclose.workers.dev/",
 			},
 			{
 				property: "og:type",
