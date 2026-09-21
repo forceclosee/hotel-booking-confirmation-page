@@ -56,25 +56,27 @@ A responsive hotel booking confirmation page built with SolidJS and TanStack Sta
 - **Fan-out hover animation** - the receipt and welcome cards tilt apart on hover
 - **Live weather widget** - **Today in Cassis** forecast from Open-Meteo, validated with Zod, fetched through a TanStack Start server function, with skeleton loaders
 - **Toast notifications** - loading, success, and error states built on Kobalte
+- **Auto hide header** - auto hide headers using css `scroll-state` queries
 
 ## Screenshots
 
 - Mobile
 
-<!-- isi screenshot -->
+![Page on mobile device](./public/screenshot-mobile.png)
+![Page on mobile device with menu open](./public/screenshot-mobile-menu.png)
 
 - Tablet
 
-<!-- isi screenshot -->
+![Page on tablet device](./public/screenshot-tablet.png)
 
 - Desktop
 
-<!-- isi screenshot -->
+![Page on desktop device](./public/screenshot-desktop.png)
 
 ## Links
 
-- Solution URL: [solution URL](https://your-solution-url.com) <!-- ganti link -->
-- Live Site URL: [live site URL](https://your-live-site-url.com) <!-- ganti link -->
+- Solution URL: [solution URL](https://www.frontendmentor.io/solutions/hotel-booking-confirmation-page-with-print-calendar-weather-and-themes-9uxbRhYb-c)
+- Live Site URL: [live site URL](https://hotel-booking-confirmation-page.forceclose.workers.dev/)
 
 ## Tech Stack
 
@@ -84,9 +86,9 @@ A responsive hotel booking confirmation page built with SolidJS and TanStack Sta
 - **Vite**
 - **TypeScript**
 - **TanStack Query** - data fetching
-- **Kobalte** - accessible headless UI (buttoon, dropdowns, tooltips, toasts)
+- **Kobalte** - accessible headless UI (buttons, dropdowns, tooltips, toasts)
 - **Tailwind CSS v4**
-- **Fontsource** - self-hosted variable fonts (DM Sans, Fraunces, DM Mono)
+- **Fontsource** - self-hosted variable fonts (Fraunces, DM Sans, and DM Mono)
 - **Biome** - linting and formatting
 - **Cloudflare Workers** - deployment
 
