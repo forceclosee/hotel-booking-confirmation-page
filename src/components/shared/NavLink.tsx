@@ -56,7 +56,7 @@ export default function NavLink(props: Props) {
 								class={classList(
 									"squircle flex items-center gap-2 rounded-xl transition-colors duration-200 data-[status=active]:text-text data-[status=active]:ring-1 data-[status=active]:ring-border-muted data-[status=active]:ring-inset",
 									props.isDesktop
-										? "items-center rounded-xl px-3.5 py-2.5 hover:bg-bg-card hover:text-text hover:ring-1 hover:ring-border-muted hover:ring-inset focus-visible:bg-bg-card focus-visible:text-text data-[status=active]:bg-bg-card"
+										? "rounded-xl px-3.5 py-2.5 hover:bg-bg-card hover:text-text hover:ring-1 hover:ring-border-muted hover:ring-inset focus-visible:bg-bg-card focus-visible:text-text data-[status=active]:bg-bg-card"
 										: "relative flex-col px-4 py-3 data-[status=active]:bg-bg-gray",
 								)}>
 								<item.icon
